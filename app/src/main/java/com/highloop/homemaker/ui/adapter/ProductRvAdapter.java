@@ -44,6 +44,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         public ImageView imgPlus;
         public ImageView btnAddToBuyingList;
         public ImageView btnDelete;
+        public ImageView btnIcon;
         public AppCompatSpinner sprUnit;
         public CardView cardView;
 
@@ -54,6 +55,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
             // 2. Define your Views here
 
             imgMinus = (ImageView)itemView.findViewById(R.id.imgMinus);
+            btnIcon = (ImageView)itemView.findViewById(R.id.iconImv);
             tvQuantity = (TextView)itemView.findViewById(R.id.tvQuantity);
             tvItemName = (TextView)itemView.findViewById(R.id.tvItemName);
             imgPlus = (ImageView)itemView.findViewById(R.id.imgPlus);
@@ -74,6 +76,34 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         return new Viewholder(itemView);
     }
 
+    void setIcon(Viewholder holder, String category){
+        switch(category) {
+            case "Essential":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_essential);
+                break;
+            case "Groceries":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_groceries);
+                break;
+            case "Masala":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_masala);
+                break;
+            case "Beverages":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_beverages);
+                break;
+            case "Cleaning Products":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_cleaning_products);
+                break;
+            case "Dry Fruits":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_dry_fruits);
+                break;
+            case "Vegetables":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_vegetables);
+                break;
+            default:
+                holder.btnIcon.setBackgroundResource(R.mipmap.ic_launcher);
+        }
+    }
+
     @Override
     public void onBindViewHolder(Viewholder holder, int position) {
 
@@ -88,6 +118,8 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
                 break;
             }
         }
+
+        setIcon(holder, data.get(holder.getAdapterPosition()).getListName());
 
         holder.tvQuantity.setText(data.get(holder.getAdapterPosition()).getQuantity());
         holder.tvItemName.setText(data.get(holder.getAdapterPosition()).getItem());
