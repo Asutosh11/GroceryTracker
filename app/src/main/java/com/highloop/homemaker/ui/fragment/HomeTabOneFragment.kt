@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.highloop.homemaker.R
 import com.highloop.homemaker.data.dao.ItemsListDAO
-import com.highloop.homemaker.data.event.CategorySelectEvent
+import com.highloop.homemaker.data.event.NewCategoryAddedEvent
 import com.highloop.homemaker.data.event.NewProductAddedEvent
 import com.highloop.homemaker.data.pojo.Product
 import com.highloop.homemaker.ui.adapter.ProductRvAdapter
@@ -132,8 +132,11 @@ class HomeTabOneFragment : Fragment(){
         }
     }
 
+    /**
+     * New category added listener
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageEvent(event: CategorySelectEvent?) {
+    fun onMessageEvent(event: NewCategoryAddedEvent?) {
         if(event != null && event.selectedCategoryName != null && !event.selectedCategoryName.equals("")){
 
             var listOfProducts = ItemsListDAO.searchItemNamesByCategory(event.selectedCategoryName)
@@ -146,11 +149,14 @@ class HomeTabOneFragment : Fragment(){
         }
     }
 
+    /**
+     * New product added listener
+     */
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onMessageEvent(event: NewProductAddedEvent?) {
-        if(event != null && event.newProductName != null && !event.newProductName.equals("")){
+        if(event != null && event.newProductCategory != null && !event.newProductCategory.equals("")){
 
-            var listOfProducts = ItemsListDAO.searchItemByName(event.newProductName)
+            var listOfProducts = ItemsListDAO.searchItemNamesByCategory(event.newProductCategory)
             if(listOfProducts != null && listOfProducts.size > 0){
                 initRecyclerView(listOfProducts)
                 searchACT.setText("")

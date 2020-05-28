@@ -2,8 +2,6 @@ package com.highloop.homemaker.ui.fragment
 
 import android.app.Dialog
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -14,6 +12,7 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import com.highloop.homemaker.R
 import com.highloop.homemaker.data.dao.ItemsListDAO
+import com.highloop.homemaker.data.event.NewCategoryAddedEvent
 import com.highloop.homemaker.data.event.NewProductAddedEvent
 import com.highloop.homemaker.data.pojo.Product
 import com.highloop.homemaker.util.AppConstantsUtil
@@ -89,7 +88,7 @@ class AddProductDialogFragment : DialogFragment() {
                     else if(categorySpinner.isEnabled && categorySpinner.selectedItem != null && !categorySpinner.selectedItem.toString().equals("")){
                         ItemsListDAO.saveOneProduct(Product(itemNameET.text.toString(), "1", "Pack", categorySpinner.selectedItem.toString()))
                         Toast.makeText(context, getString(R.string.new_product_added), Toast.LENGTH_LONG).show()
-                        closeDialog()
+                        closeDialog(additionScreenType)
                     }
                 }
                 is AppConstantsUtil.Companion.AdditionScreenType.AddCategory -> {
@@ -103,7 +102,7 @@ class AddProductDialogFragment : DialogFragment() {
                         if(!allPresentCategors.contains(newCategoryNameET.text.toString().toLowerCase())){
                             ItemsListDAO.saveCategoryWithNullProduct(newCategoryNameET.text.toString())
                             Toast.makeText(context, getString(R.string.new_category_added), Toast.LENGTH_LONG).show()
-                            closeDialog()
+                            closeDialog(additionScreenType)
                         }
                         else{
                             Toast.makeText(context, getString(R.string.category_exists), Toast.LENGTH_LONG).show()
@@ -119,8 +118,19 @@ class AddProductDialogFragment : DialogFragment() {
         return root
     }
 
-    private fun closeDialog() {
-        EventBus.getDefault().postSticky(NewProductAddedEvent(itemNameET.text.toString()))
+    private fun closeDialog(additionScreenType: AppConstantsUtil.Companion.AdditionScreenType) {
+
+
+        when (additionScreenType) {
+            is AppConstantsUtil.Companion.AdditionScreenType.AddProduct -> {
+                EventBus.getDefault().postSticky(NewProductAddedEvent(itemNameET.text.toString(), categorySpinner.selectedItem.toString()))
+            }
+            is AppConstantsUtil.Companion.AdditionScreenType.AddCategory -> {
+                EventBus.getDefault().postSticky(categorySpinner.selectedItem.toString())
+
+            }
+        }
+
         dismiss()
     }
 

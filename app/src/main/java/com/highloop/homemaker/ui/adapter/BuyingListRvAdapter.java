@@ -26,7 +26,6 @@ import java.util.ArrayList;
 public class BuyingListRvAdapter extends RecyclerView.Adapter<BuyingListRvAdapter.Viewholder> {
 
     private ArrayList<Product> data;
-    private Product model;
     private Context context;
 
     public BuyingListRvAdapter(ArrayList<Product> data, Context context) {
@@ -40,6 +39,7 @@ public class BuyingListRvAdapter extends RecyclerView.Adapter<BuyingListRvAdapte
 
         public TextView tvItemName;
         public ImageView btnDelete;
+        public ImageView btnIcon;
 
 
         public Viewholder(View itemView) {
@@ -47,6 +47,7 @@ public class BuyingListRvAdapter extends RecyclerView.Adapter<BuyingListRvAdapte
 
             // 2. Define your Views here
 
+            btnIcon = (ImageView)itemView.findViewById(R.id.iconImv);
             tvItemName = (TextView)itemView.findViewById(R.id.tvItemName);
             btnDelete = (ImageView)itemView.findViewById(R.id.btn_delete);
 
@@ -62,12 +63,40 @@ public class BuyingListRvAdapter extends RecyclerView.Adapter<BuyingListRvAdapte
         return new Viewholder(itemView);
     }
 
+    void setIcon(Viewholder holder, String category){
+        switch(category) {
+            case "Essential":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_essential);
+                break;
+            case "Groceries":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_groceries);
+                break;
+            case "Masala":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_masala);
+                break;
+            case "Beverages":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_beverages);
+                break;
+            case "Cleaning Products":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_cleaning_products);
+                break;
+            case "Dry Fruits":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_dry_fruits);
+                break;
+            case "Vegetables":
+                holder.btnIcon.setBackgroundResource(R.drawable.ic_vegetables);
+                break;
+            default:
+                holder.btnIcon.setBackgroundResource(R.mipmap.ic_launcher);
+        }
+    }
+
     @Override
     public void onBindViewHolder(Viewholder holder, int position) {
 
-        model = data.get(position);
+        setIcon(holder, data.get(holder.getAdapterPosition()).getListName());
 
-        holder.tvItemName.setText(model.getItem());
+        holder.tvItemName.setText(data.get(holder.getAdapterPosition()).getItem());
 
         holder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

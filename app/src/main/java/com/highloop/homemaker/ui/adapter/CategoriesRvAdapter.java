@@ -11,7 +11,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.highloop.homemaker.R;
-import com.highloop.homemaker.data.event.CategorySelectEvent;
+import com.highloop.homemaker.data.event.NewCategoryAddedEvent;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -64,7 +64,7 @@ public class CategoriesRvAdapter extends RecyclerView.Adapter<CategoriesRvAdapte
         holder.tvCategoryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                EventBus.getDefault().postSticky(new CategorySelectEvent(holder.tvCategoryName.getText().toString()));
+                EventBus.getDefault().postSticky(new NewCategoryAddedEvent(holder.tvCategoryName.getText().toString()));
                 fragment.dismiss();
             }
         });
