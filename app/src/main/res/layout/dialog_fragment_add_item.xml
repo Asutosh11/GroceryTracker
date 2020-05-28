@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <TextView
+        android:id="@+id/title_dialog_tv"
+        android:drawablePadding="40dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:drawableTint="@color/white"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/colorPrimary"
+        android:text="Add a new product"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        ></TextView>
+
+    <TextView
+        android:id="@+id/tv_label_existing_categories"
+        android:layout_marginTop="14dp"
+        android:drawableTint="@color/white"
+        android:textSize="11sp"
+        android:textColor="@color/iconsGrey"
+        android:gravity="center"
+        android:text="Select a Category"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        ></TextView>
+
+    <Spinner
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/spinner_box"
+        android:id="@+id/category_spinner"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"/>
+
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="14sp"
+        android:background="@drawable/box_shape"
+        android:padding="4dp"
+        android:id="@+id/et_new_category_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter a new category"/>
+
+    <EditText
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:textSize="14sp"
+        android:background="@drawable/box_shape"
+        android:padding="4dp"
+        android:id="@+id/et_item_name"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Enter Product Name"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_add"
+        android:drawablePadding="40dp"
+        android:paddingRight="20dp"
+        android:paddingLeft="20dp"
+        android:drawableTint="@color/white"
+        android:textSize="16sp"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/colorPrimaryDark"
+        android:text="Add"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        ></Button>
+
+</LinearLayout>

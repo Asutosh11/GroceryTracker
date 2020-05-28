@@ -1,0 +1,85 @@
+{
+  "myGrocerylist" : [
+
+    {
+      "listName" : "Essential",
+      "products": [
+        {"item" : "Rice", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Wheat flour/Atta", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Salt", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Sugar", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Tea", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Cooking oil", "quantity" : "1", "unit" : "Liter" },
+        {"item" : "Daal", "quantity" : "1", "unit" : "KG" }
+      ]
+    },
+
+    {
+      "listName" : "Groceries",
+      "products": [
+        {"item" : "Rava", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Poha", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Maggie", "quantity" : "1", "unit" : "Pack" },
+        {"item" : "Milk powder", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Besan", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Grount Nuts", "quantity" : "1", "unit" : "KG" }
+      ]
+    },
+
+    {
+      "listName" : "Masala",
+      "products": [
+        {"item" : "Garam Masala", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Black Pepper", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Jeera", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Jeera Powder", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Dhania Powder", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Hing", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Aam Chur", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Mustard Seeds/Sarso", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Mirch Powder", "quantity" : "1", "unit" : "Grams" }
+      ]
+    },
+
+    {
+      "listName" : "Beverages",
+      "products": [
+        {"item" : "Coffee", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Horlicks", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Bournvita", "quantity" : "1", "unit" : "KG" }
+      ]
+    },
+
+    {
+      "listName" : "Cleaning Products",
+      "products": [
+        {"item" : "Detergent Powder", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Hand wash", "quantity" : "1", "unit" : "ml" },
+        {"item" : "Dish wash", "quantity" : "1", "unit" : "ml" },
+        {"item" : "Soap", "quantity" : "1", "unit" : "Pack" },
+        {"item" : "Garbage Bag", "quantity" : "1", "unit" : "Pack" }
+      ]
+    },
+
+    {
+      "listName" : "Dry Fruits",
+      "products": [
+        {"item" : "Almonds", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Raisins", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Dates", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Cashew", "quantity" : "1", "unit" : "Grams" }
+      ]
+    },
+
+    {
+      "listName" : "Vegetables",
+      "products": [
+        {"item" : "Potatoes", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Onions", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Tomatoes", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Brijanls", "quantity" : "1", "unit" : "Grams" }
+      ]
+    }
+
+  ]
+}

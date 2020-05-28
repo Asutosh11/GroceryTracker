@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Grocery Tracker</string>
+    <string name="tab_text_1">Household Items</string>
+    <string name="tab_text_2">Buying List</string>
+    <string name="item_already_added">Item already added to buying list</string>
+    <string name="added_to_buying_list">Added to buying list</string>
+    <string name="delete_grocey_confirmation">Are you sure you want to delete this item from your grocery list?</string>
+    <string name="no">No</string>
+    <string name="yes">Yes</string>
+    <string name="new_product_added">New product added</string>
+    <string name="new_category_added">New category added</string>
+    <string name="product_exists">This product already exists in your list</string>
+    <string name="enter_new_category">Please a new enter category</string>
+    <string name="enter_item">Please enter product name</string>
+    <string name="category_exists">Entered category already exists</string>
+
+    <string-array name="quantity_unit_values">
+        <item>KG</item>
+        <item>grams</item>
+        <item>Litre</item>
+        <item>ML</item>
+    </string-array>
+
+</resources>
