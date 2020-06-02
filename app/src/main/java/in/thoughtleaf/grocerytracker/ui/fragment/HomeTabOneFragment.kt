@@ -15,12 +15,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.highloop.homemaker.R
 import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
 import `in`.thoughtleaf.grocerytracker.data.event.NewCategoryAddedEvent
 import `in`.thoughtleaf.grocerytracker.data.event.NewProductAddedEvent
 import `in`.thoughtleaf.grocerytracker.data.pojo.Product
 import `in`.thoughtleaf.grocerytracker.ui.adapter.ProductRvAdapter
+import com.thoughtleaf.grocerytracker.R
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
 import org.greenrobot.eventbus.ThreadMode

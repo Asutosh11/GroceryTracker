@@ -10,7 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.highloop.homemaker.R;
+import com.thoughtleaf.grocerytracker.R;
 import in.thoughtleaf.grocerytracker.data.event.NewCategoryAddedEvent;
 
 import org.greenrobot.eventbus.EventBus;

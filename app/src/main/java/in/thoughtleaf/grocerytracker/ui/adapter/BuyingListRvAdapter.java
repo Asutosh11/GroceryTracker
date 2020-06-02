@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.highloop.homemaker.R;
+import com.thoughtleaf.grocerytracker.R;
 import in.thoughtleaf.grocerytracker.data.dao.BuyingListDAO;
 import in.thoughtleaf.grocerytracker.data.pojo.Product;
 

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.highloop.homemaker.R
 import `in`.thoughtleaf.grocerytracker.data.dao.BuyingListDAO
 import `in`.thoughtleaf.grocerytracker.data.pojo.Product
 import `in`.thoughtleaf.grocerytracker.ui.adapter.BuyingListRvAdapter
+import com.thoughtleaf.grocerytracker.R
 import java.util.ArrayList
 
 /**

@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.highloop.homemaker.R
 import `in`.thoughtleaf.grocerytracker.ui.fragment.HomeTabOneFragment
 import `in`.thoughtleaf.grocerytracker.ui.fragment.HomeTabTwoFragment
+import com.thoughtleaf.grocerytracker.R
 
 private val TAB_TITLES = arrayOf(
         R.string.tab_text_1,

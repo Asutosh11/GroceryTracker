@@ -10,11 +10,11 @@ import android.view.WindowManager
 import android.widget.*
 import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
-import com.highloop.homemaker.R
 import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
 import `in`.thoughtleaf.grocerytracker.data.event.NewProductAddedEvent
 import `in`.thoughtleaf.grocerytracker.data.pojo.Product
 import `in`.thoughtleaf.grocerytracker.util.AppConstantsUtil
+import com.thoughtleaf.grocerytracker.R
 import org.greenrobot.eventbus.EventBus
 
 

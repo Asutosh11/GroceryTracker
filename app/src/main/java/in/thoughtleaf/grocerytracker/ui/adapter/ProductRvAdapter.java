@@ -17,7 +17,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.highloop.homemaker.R;
+import com.thoughtleaf.grocerytracker.R;
 import in.thoughtleaf.grocerytracker.data.dao.BuyingListDAO;
 import in.thoughtleaf.grocerytracker.data.dao.ItemsListDAO;
 import in.thoughtleaf.grocerytracker.data.pojo.Product;

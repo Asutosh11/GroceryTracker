@@ -8,9 +8,9 @@ import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.highloop.homemaker.R
 import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
 import `in`.thoughtleaf.grocerytracker.ui.adapter.CategoriesRvAdapter
+import com.thoughtleaf.grocerytracker.R
 import java.util.ArrayList
 
 

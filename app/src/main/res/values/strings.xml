@@ -9,7 +9,6 @@
     <string name="yes">Yes</string>
     <string name="new_product_added">New product added</string>
     <string name="new_category_added">New category added</string>
-    <string name="product_exists">This product already exists in your list</string>
     <string name="enter_new_category">Please a new enter category</string>
     <string name="enter_item">Please enter product name</string>
     <string name="category_exists">Entered category already exists</string>
