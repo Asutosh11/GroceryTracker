@@ -20,11 +20,10 @@ class BuyingListDAO {
 
     companion object{
 
-        fun saveData(product: Product) {
+        fun addProduct(product: Product) {
             val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
 
-            var buyingItem : BuyingListDAO =
-                BuyingListDAO()
+            var buyingItem : BuyingListDAO = BuyingListDAO()
 
             buyingItem.itemCategory = product.listName!!
             buyingItem.itemName = product.item!!
@@ -59,6 +58,42 @@ class BuyingListDAO {
             return productsList
         }
 
+        fun getAllOfflineDataNames() : ArrayList<String> {
+
+            val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
+
+
+            val result: List<BuyingListDAO> = buyingItemsListBox.query()
+                .notNull(BuyingListDAO_.itemName)
+                .build().find()
+
+            var productsList : ArrayList<String> = ArrayList()
+
+            for(product in result){
+                productsList.add(product.itemName!!)
+            }
+
+            return productsList
+        }
+
+        fun getAllOfflineDataNamesLowerCase() : ArrayList<String> {
+
+            val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
+
+
+            val result: List<BuyingListDAO> = buyingItemsListBox.query()
+                .notNull(BuyingListDAO_.itemName)
+                .build().find()
+
+            var productsList : ArrayList<String> = ArrayList()
+
+            for(product in result){
+                productsList.add(product.itemName!!.toLowerCase())
+            }
+
+            return productsList
+        }
+
         fun deleteItemByName(searchKey : String?){
 
             val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
@@ -66,7 +101,7 @@ class BuyingListDAO {
             val result: BuyingListDAO = buyingItemsListBox.query()
                 .notNull(BuyingListDAO_.itemName)
                 .equal(BuyingListDAO_.itemName, searchKey)
-                .build().findUnique()!!
+                .build().findFirst()!!
 
             buyingItemsListBox.remove(result)
         }

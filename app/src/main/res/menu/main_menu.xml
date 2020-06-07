@@ -6,6 +6,14 @@
     android:layout_width="wrap_content"
     tools:ignore="NamespaceTypo">
 
+    <item android:id="@+id/menu_share"
+        android:title="Share this App"
+        app:showAsAction="withText">
+    </item>
+    <item android:id="@+id/menu_rate"
+        android:title="Rate the App"
+        app:showAsAction="withText">
+    </item>
     <item android:id="@+id/menu_credits"
         android:title="Credits"
         app:showAsAction="withText">

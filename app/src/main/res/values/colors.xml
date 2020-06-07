@@ -5,8 +5,15 @@
     <color name="colorAccent">#9A9A9A</color>
     <color name="textBoxBorder">#9A9A9A</color>
     <color name="iconsGrey">#676767</color>
+    <color name="iconsGrey2">#676767</color>
     <color name="lightGreen">#00AF9F</color>
     <color name="lightGreen2">#0EE16D</color>
+    <color name="lightGreen3">#93E1B5</color>
+    <color name="lightGreen4">#8CD6AD</color>
     <color name="white">#ffffff</color>
     <color name="sreen_background_grey">#E4E4E4</color>
+    <color name="black">#000</color>
+    <color name="custom_red">#CD4E4E</color>
+    <color name="custom_red2">#E69999</color>
+    <color name="iconsGrey3">#BCBCBC</color>
 </resources>

@@ -3,12 +3,15 @@ package `in`.thoughtleaf.grocerytracker.ui.activity
 import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
 import `in`.thoughtleaf.grocerytracker.ui.adapter.SectionsPagerAdapter
 import `in`.thoughtleaf.grocerytracker.ui.fragment.CreditsDialogFragment
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ShareCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 import com.thoughtleaf.grocerytracker.R
@@ -53,6 +56,19 @@ class MainActivity : AppCompatActivity() {
                 val infoDialogFragment =
                     CreditsDialogFragment()
                 infoDialogFragment.show(fm!!, "dialog_fragment")
+                true
+            }
+            R.id.menu_share -> {
+                ShareCompat.IntentBuilder.from(this)
+                    .setType("text/plain")
+                    .setChooserTitle(applicationContext.getString(R.string.app_name))
+                    .setText("https://play.google.com/store/apps/details?id=com.thoughtleaf.grocerytracker")
+                    .startChooser();
+                true
+            }
+            R.id.menu_rate -> {
+                val marketUri: Uri = Uri.parse("market://details?id=$packageName")
+                startActivity(Intent(Intent.ACTION_VIEW, marketUri))
                 true
             }
             else -> super.onOptionsItemSelected(item)

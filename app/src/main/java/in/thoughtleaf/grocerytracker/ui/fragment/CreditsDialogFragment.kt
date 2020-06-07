@@ -26,39 +26,7 @@ class CreditsDialogFragment : DialogFragment() {
 
         var html : String = "<div>Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
                 "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"http://www.freepik.com/\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"https://www.flaticon.com/authors/flat-icons\" title=\"Flat Icons\">Flat Icons</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"https://www.flaticon.com/authors/freepik\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"http://www.freepik.com/\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>\n" +
-                "\n" +
-                "<div>Icons made by <a href=\"http://www.freepik.com/\" title=\"Freepik\">Freepik</a> from <a href=\"https://www.flaticon.com/\" title=\"Flaticon\">www.flaticon.com</a></div>\n" +
-                "\n" +
-                "<br>"
+                "<br>\n"
         webView.loadDataWithBaseURL("", html, mimeType, encoding, "");
 
         return root

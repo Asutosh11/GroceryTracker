@@ -39,14 +39,13 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
 
         // 1. Declare your Views here
 
-        public ImageView imgMinus;
+        public TextView imgMinus;
         public TextView tvQuantity, tvItemName;
-        public ImageView imgPlus;
+        public TextView imgPlus;
         public ImageView btnAddToBuyingList;
         public ImageView btnDelete;
         public ImageView btnIcon;
         public AppCompatSpinner sprUnit;
-        public CardView cardView;
 
 
         public Viewholder(View itemView) {
@@ -54,15 +53,14 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
 
             // 2. Define your Views here
 
-            imgMinus = (ImageView)itemView.findViewById(R.id.imgMinus);
+            imgMinus = (TextView)itemView.findViewById(R.id.imgMinus);
             btnIcon = (ImageView)itemView.findViewById(R.id.iconImv);
             tvQuantity = (TextView)itemView.findViewById(R.id.tvQuantity);
             tvItemName = (TextView)itemView.findViewById(R.id.tvItemName);
-            imgPlus = (ImageView)itemView.findViewById(R.id.imgPlus);
+            imgPlus = (TextView)itemView.findViewById(R.id.imgPlus);
             btnAddToBuyingList = (ImageView)itemView.findViewById(R.id.btn_add_to_buying_list);
             btnDelete = (ImageView)itemView.findViewById(R.id.btn_delete);
             sprUnit = (AppCompatSpinner)itemView.findViewById(R.id.sprUnit);
-            cardView = (CardView)itemView.findViewById(R.id.card_view);
 
         }
     }
@@ -107,7 +105,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
     @Override
     public void onBindViewHolder(Viewholder holder, int position) {
 
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.quantity_unit_values, R.layout.spinner_item);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(context, R.array.quantity_unit_values, R.layout.spinner_item_dark);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         holder.sprUnit.setAdapter(adapter);
         String[] unitArray = context.getResources().getStringArray(R.array.quantity_unit_values);
@@ -127,9 +125,9 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         holder.imgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int qty = Integer.parseInt(holder.tvQuantity.getText().toString());
+                double qty = Double.parseDouble(holder.tvQuantity.getText().toString());
                 if(qty > 0){
-                    qty--;
+                    qty = qty - 0.5;
                     holder.tvQuantity.setText(String.valueOf(qty));
                     ItemsListDAO.Companion.updateItemByName(holder.tvItemName.getText().toString(), String.valueOf(qty));
                 }
@@ -139,8 +137,8 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         holder.imgPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int qty = Integer.parseInt(holder.tvQuantity.getText().toString());
-                qty++;
+                double qty = Double.parseDouble(holder.tvQuantity.getText().toString());
+                qty = qty + 0.5;
                 holder.tvQuantity.setText(String.valueOf(qty));
                 ItemsListDAO.Companion.updateItemByName(holder.tvItemName.getText().toString(), String.valueOf(qty));
             }
@@ -156,7 +154,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
                         return;
                     }
                 }
-                BuyingListDAO.Companion.saveData(data.get(holder.getAdapterPosition()));
+                BuyingListDAO.Companion.addProduct(data.get(holder.getAdapterPosition()));
                 Toast.makeText(context, R.string.added_to_buying_list, Toast.LENGTH_LONG).show();
 
             }

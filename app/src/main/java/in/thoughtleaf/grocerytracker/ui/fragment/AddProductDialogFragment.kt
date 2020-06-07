@@ -85,16 +85,22 @@ class AddProductDialogFragment : DialogFragment() {
                         Toast.makeText(context, getString(R.string.enter_item), Toast.LENGTH_LONG).show()
                     }
                     else if(categorySpinner.isEnabled && categorySpinner.selectedItem != null && !categorySpinner.selectedItem.toString().equals("")){
-                        ItemsListDAO.saveOneProduct(
-                            Product(
-                                itemNameET.text.toString(),
-                                "1",
-                                "Pack",
-                                categorySpinner.selectedItem.toString()
+                        if(!ItemsListDAO.getAllOfflineItemsNamesLowerCase().contains(itemNameET.text.toString().toLowerCase())){
+                            ItemsListDAO.saveOneProduct(
+                                Product(
+                                    itemNameET.text.toString(),
+                                    "1",
+                                    "Pack",
+                                    categorySpinner.selectedItem.toString()
+                                )
                             )
-                        )
-                        Toast.makeText(context, getString(R.string.new_product_added), Toast.LENGTH_LONG).show()
-                        closeDialog(additionScreenType)
+                            Toast.makeText(context, getString(R.string.new_product_added) + " " + getString(R.string.to) + " " +
+                                    categorySpinner.selectedItem.toString(), Toast.LENGTH_LONG).show()
+                            closeDialog(additionScreenType)
+                        }
+                        else{
+                            Toast.makeText(context, "Product already exists", Toast.LENGTH_LONG).show()
+                        }
                     }
                 }
                 is AppConstantsUtil.Companion.AdditionScreenType.AddCategory -> {
@@ -125,8 +131,6 @@ class AddProductDialogFragment : DialogFragment() {
     }
 
     private fun closeDialog(additionScreenType: AppConstantsUtil.Companion.AdditionScreenType) {
-
-
         when (additionScreenType) {
             is AppConstantsUtil.Companion.AdditionScreenType.AddProduct -> {
                 EventBus.getDefault().postSticky(
@@ -137,8 +141,9 @@ class AddProductDialogFragment : DialogFragment() {
                 )
             }
             is AppConstantsUtil.Companion.AdditionScreenType.AddCategory -> {
-                EventBus.getDefault().postSticky(categorySpinner.selectedItem.toString())
-
+                if(categorySpinner.selectedItem != null){
+                    EventBus.getDefault().postSticky(categorySpinner.selectedItem.toString())
+                }
             }
         }
 

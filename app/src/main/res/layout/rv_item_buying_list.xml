@@ -6,14 +6,16 @@
     xmlns:card_view="http://schemas.android.com/tools"
     android:layout_gravity="center_horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
+    android:layout_height="50dp"
+    android:gravity="center_vertical"
+    android:paddingLeft="16dp"
     android:layout_marginRight="8dp"
-    android:padding="8dp"
+    android:background="@color/white"
     >
 
 
     <androidx.cardview.widget.CardView
+        android:layout_gravity="center_vertical"
         card_view:cardElevation="2dp"
         card_view:cardUseCompatPadding="true"
         card_view:cardCornerRadius="4dp"
@@ -21,11 +23,14 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:orientation="horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
+                android:visibility="gone"
                 android:gravity="center"
                 android:layout_width="0dp"
                 android:layout_weight=".3"
@@ -42,17 +47,18 @@
             </LinearLayout>
 
             <LinearLayout
-                android:background="@color/colorPrimaryDark"
-                android:gravity="center"
+                android:background="@color/white"
+                android:gravity="left|center_vertical"
                 android:layout_width="0dp"
                 android:layout_weight="1.5"
                 android:layout_height="match_parent">
 
                 <TextView
+                    android:layout_gravity="left|center_vertical"
                     android:id="@+id/tvItemName"
-                    android:gravity="center"
+                    android:gravity="left|center_vertical"
                     android:textSize="16sp"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:paddingLeft="6dp"
                     android:paddingRight="6dp"
                     android:text="item name"
@@ -65,9 +71,9 @@
             <ImageView
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/delete"
-                android:background="@color/lightGreen"
+                android:background="@color/white"
                 android:id="@+id/btn_delete"
-                android:textColor="@color/white"
+                android:tint="@color/custom_red"
                 android:orientation="vertical"
                 android:gravity="center"
                 android:layout_width="0dp"

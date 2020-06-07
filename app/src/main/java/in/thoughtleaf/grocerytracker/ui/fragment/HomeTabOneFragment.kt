@@ -1,5 +1,10 @@
 package `in`.thoughtleaf.grocerytracker.ui.fragment
 
+import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
+import `in`.thoughtleaf.grocerytracker.data.event.NewCategoryAddedEvent
+import `in`.thoughtleaf.grocerytracker.data.event.NewProductAddedEvent
+import `in`.thoughtleaf.grocerytracker.data.pojo.Product
+import `in`.thoughtleaf.grocerytracker.ui.adapter.ProductRvAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,15 +16,12 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
-import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
-import `in`.thoughtleaf.grocerytracker.data.event.NewCategoryAddedEvent
-import `in`.thoughtleaf.grocerytracker.data.event.NewProductAddedEvent
-import `in`.thoughtleaf.grocerytracker.data.pojo.Product
-import `in`.thoughtleaf.grocerytracker.ui.adapter.ProductRvAdapter
 import com.thoughtleaf.grocerytracker.R
 import org.greenrobot.eventbus.EventBus
 import org.greenrobot.eventbus.Subscribe
@@ -44,8 +46,10 @@ class HomeTabOneFragment : Fragment(){
 
     private fun initRecyclerView(list : ArrayList<Product>) {
         recyclerView.layoutManager = LinearLayoutManager(context)
-        val adapter =
-            ProductRvAdapter(list, context)
+        val itemDecorator = DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
+        itemDecorator.setDrawable(ContextCompat.getDrawable(context!!, R.drawable.line_separator)!!)
+        recyclerView.addItemDecoration(itemDecorator)
+        val adapter = ProductRvAdapter(list, context)
         recyclerView.adapter = adapter
 
     }
@@ -58,7 +62,7 @@ class HomeTabOneFragment : Fragment(){
 
         recyclerView = root.findViewById(R.id.recycler_view)
         searchACT = root.findViewById(R.id.search_box_act)
-        btnCompleteList = root.findViewById(R.id.list_button)
+        btnCompleteList = root.findViewById(R.id.categories_button)
         tvCategoryLabel = root.findViewById(R.id.tv_label_for_category)
         fab = root.findViewById(R.id.fab)
 
@@ -69,7 +73,7 @@ class HomeTabOneFragment : Fragment(){
             val args = Bundle()
             args.putString("dialog_type", "add_product")
             if(tvCategoryLabel.text != null && !tvCategoryLabel.text.toString().equals("")){
-                var selectedCAtegory = tvCategoryLabel.text.toString().replace("Category: ", "")
+                var selectedCAtegory = tvCategoryLabel.text.toString()
                 args.putString("selected_category", selectedCAtegory)
             }
             addProductDialogFragment.setArguments(args)
@@ -81,17 +85,19 @@ class HomeTabOneFragment : Fragment(){
 
 
     override fun onDestroy() {
-        super.onDestroy()
+
         if(EventBus.getDefault().isRegistered(this)){
             EventBus.getDefault().unregister(this);
         }
+
+        super.onDestroy()
     }
 
     override fun onResume() {
         super.onResume()
 
         if(!EventBus.getDefault().isRegistered(this)){
-            EventBus.getDefault().register(this);
+            EventBus.getDefault().register(this)
         }
 
         var adapter: ArrayAdapter<String> = ArrayAdapter<String>(context!!, android.R.layout.simple_list_item_1, ItemsListDAO.getAllOfflineItemsNames())
@@ -146,7 +152,7 @@ class HomeTabOneFragment : Fragment(){
             if(listOfProducts != null && listOfProducts.size > 0){
                 initRecyclerView(listOfProducts)
                 tvCategoryLabel.visibility = VISIBLE
-                tvCategoryLabel.setText("Category: "+event.selectedCategoryName)
+                tvCategoryLabel.setText(event.selectedCategoryName)
                 searchACT.setText("")
             }
         }
@@ -160,7 +166,7 @@ class HomeTabOneFragment : Fragment(){
         if(event != null && event.newProductCategory != null && !event.newProductCategory.equals("")){
 
             var listOfProducts = ItemsListDAO.searchItemNamesByCategory(event.newProductCategory)
-            if(listOfProducts != null && listOfProducts.size > 0){
+            if(listOfProducts != null && listOfProducts.size > 0 && event.newProductCategory.equals(tvCategoryLabel.text.toString())){
                 initRecyclerView(listOfProducts)
                 searchACT.setText("")
             }

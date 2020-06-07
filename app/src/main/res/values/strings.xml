@@ -12,12 +12,14 @@
     <string name="enter_new_category">Please a new enter category</string>
     <string name="enter_item">Please enter product name</string>
     <string name="category_exists">Entered category already exists</string>
+    <string name="to">to</string>
 
     <string-array name="quantity_unit_values">
         <item>KG</item>
         <item>grams</item>
         <item>Litre</item>
         <item>ML</item>
+        <item>Pack</item>
     </string-array>
 
 </resources>

@@ -2,7 +2,7 @@
   "myGrocerylist" : [
 
     {
-      "listName" : "Essential",
+      "listName" : "Essentials",
       "products": [
         {"item" : "Rice", "quantity" : "1", "unit" : "KG" },
         {"item" : "Wheat flour/Atta", "quantity" : "1", "unit" : "KG" },
@@ -54,8 +54,8 @@
       "listName" : "Cleaning Products",
       "products": [
         {"item" : "Detergent Powder", "quantity" : "1", "unit" : "KG" },
-        {"item" : "Hand wash", "quantity" : "1", "unit" : "ml" },
-        {"item" : "Dish wash", "quantity" : "1", "unit" : "ml" },
+        {"item" : "Hand wash", "quantity" : "1", "unit" : "ML" },
+        {"item" : "Dish wash", "quantity" : "1", "unit" : "ML" },
         {"item" : "Soap", "quantity" : "1", "unit" : "Pack" },
         {"item" : "Garbage Bag", "quantity" : "1", "unit" : "Pack" }
       ]

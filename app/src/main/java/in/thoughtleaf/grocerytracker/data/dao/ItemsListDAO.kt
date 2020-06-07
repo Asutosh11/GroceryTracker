@@ -113,7 +113,6 @@ public class ItemsListDAO {
 
             val itemsListBox: Box<ItemsListDAO> = ObjectBoxUtil.boxStore.boxFor()
 
-
             val result: List<ItemsListDAO> = itemsListBox.query()
                 .notNull(ItemsListDAO_.itemName)
                 .build().find()
@@ -122,6 +121,23 @@ public class ItemsListDAO {
 
             for(product in result){
                 productsList.add(product.itemName!!)
+            }
+
+            return productsList
+        }
+
+        fun getAllOfflineItemsNamesLowerCase() : ArrayList<String> {
+
+            val itemsListBox: Box<ItemsListDAO> = ObjectBoxUtil.boxStore.boxFor()
+
+            val result: List<ItemsListDAO> = itemsListBox.query()
+                .notNull(ItemsListDAO_.itemName)
+                .build().find()
+
+            var productsList : ArrayList<String> = ArrayList()
+
+            for(product in result){
+                productsList.add(product.itemName!!.toLowerCase())
             }
 
             return productsList
@@ -204,7 +220,7 @@ public class ItemsListDAO {
             val result: ItemsListDAO = itemsListBox.query()
                 .notNull(ItemsListDAO_.itemName)
                 .equal(ItemsListDAO_.itemName, searchKey)
-                .build().findUnique()!!
+                .build().findFirst()!!
 
             result.itemQuantity = quantity
             itemsListBox.put(result)
@@ -217,7 +233,7 @@ public class ItemsListDAO {
             val result: ItemsListDAO = itemsListBox.query()
                 .notNull(ItemsListDAO_.itemName)
                 .equal(ItemsListDAO_.itemName, searchKey)
-                .build().findUnique()!!
+                .build().findFirst()!!
 
             itemsListBox.remove(result)
         }
