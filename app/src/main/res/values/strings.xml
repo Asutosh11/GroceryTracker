@@ -4,7 +4,7 @@
     <string name="tab_text_2">Buying List</string>
     <string name="item_already_added">Item already added to buying list</string>
     <string name="added_to_buying_list">Added to buying list</string>
-    <string name="delete_grocey_confirmation">Are you sure you want to delete this item from your grocery list?</string>
+    <string name="delete_grocey_confirmation">Are you sure you want to delete this item ?</string>
     <string name="no">No</string>
     <string name="yes">Yes</string>
     <string name="new_product_added">New product added</string>
