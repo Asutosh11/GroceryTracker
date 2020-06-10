@@ -1,61 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/constraintLayout"
-    android:layout_width="match_parent"
+
+<FrameLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="15dp">
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <Button
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:backgroundTint="@color/colorPrimary"
-        android:id="@+id/categories_button"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:text="Categories"
-        app:cornerRadius="5dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/search_box_act"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent=".35"
-        />
-
-    <AutoCompleteTextView
-        android:drawableRight="@drawable/ic_keyboard_voice_black_24dp"
-        android:id="@+id/search_box_act"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/box_shape"
-        android:hint="Search for an item"
-        android:padding="5dp"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/categories_button"
-        app:layout_constraintLeft_toRightOf="@+id/categories_button"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/categories_button"
-        app:layout_constraintWidth_percent=".55"
-        android:layout_marginRight="16dp" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:clipToPadding="false"
-        android:paddingBottom="70dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_label_for_category" />
+        android:layout_height="match_parent">
+
+        <AutoCompleteTextView
+            android:layout_marginTop="8dp"
+            android:id="@+id/search_box_act"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:background="@drawable/box_shape"
+            android:drawableRight="@drawable/ic_keyboard_voice_black_24dp"
+            android:hint="Search for an item"
+            android:padding="5dp"
+            android:textSize="16dp"/>
+
+        <Button
+            android:textSize="12sp"
+            android:paddingLeft="8dp"
+            android:paddingRight="8dp"
+            android:drawableStart="@drawable/ic_list_white_36dp"
+            android:background="@color/lightGreen"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:id="@+id/categories_button"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="12dp"
+            android:text="Select from Categories"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="5dp"
+            android:drawableLeft="@drawable/ic_list_white_36dp" />
+
+        <TextView
+            android:letterSpacing="0"
+            android:fontFamily="@font/architects_daughter_regular"
+            android:gravity="center"
+            android:padding="10dp"
+            android:background="@color/lightGreen3"
+            android:visibility="gone"
+            android:id="@+id/tv_label_for_category"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="16dp"
+            android:text=""
+            android:textSize="17sp"/>
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingBottom="70dp" />
+
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_gravity="bottom|right"
         android:tint="@color/white"
         android:backgroundTint="@color/lightGreen2"
         android:id="@+id/fab"
@@ -65,26 +76,7 @@
         android:layout_marginRight="16dp"
         android:layout_marginBottom="16dp"
         android:clickable="true"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/plus" />
 
-    <TextView
-        android:letterSpacing="0"
-        android:fontFamily="@font/architects_daughter_regular"
-        android:gravity="center"
-        android:padding="10dp"
-        android:background="@color/lightGreen3"
-        android:visibility="gone"
-        android:id="@+id/tv_label_for_category"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginTop="15dp"
-        android:text=""
-        android:textSize="17sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_box_act" />
+</FrameLayout>
 
-
-</androidx.constraintlayout.widget.ConstraintLayout>
