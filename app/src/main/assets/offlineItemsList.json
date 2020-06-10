@@ -8,9 +8,19 @@
         {"item" : "Wheat flour/Atta", "quantity" : "1", "unit" : "KG" },
         {"item" : "Salt", "quantity" : "1", "unit" : "KG" },
         {"item" : "Sugar", "quantity" : "1", "unit" : "KG" },
-        {"item" : "Tea", "quantity" : "1", "unit" : "KG" },
-        {"item" : "Cooking oil", "quantity" : "1", "unit" : "Liter" },
+        {"item" : "Cooking oil", "quantity" : "1", "unit" : "litre" },
         {"item" : "Daal", "quantity" : "1", "unit" : "KG" }
+      ]
+    },
+
+    {
+      "listName" : "Medicine",
+      "products": [
+        {"item" : "Headache medicine", "quantity" : "5", "unit" : "piece" },
+        {"item" : "Fever medicine", "quantity" : "5", "unit" : "piece" },
+        {"item" : "Cold medicine", "quantity" : "5", "unit" : "piece" },
+        {"item" : "Pain Killer", "quantity" : "5", "unit" : "piece" }
+
       ]
     },
 
@@ -19,7 +29,7 @@
       "products": [
         {"item" : "Rava", "quantity" : "1", "unit" : "KG" },
         {"item" : "Poha", "quantity" : "1", "unit" : "KG" },
-        {"item" : "Maggie", "quantity" : "1", "unit" : "Pack" },
+        {"item" : "Maggie", "quantity" : "1", "unit" : "pack" },
         {"item" : "Milk powder", "quantity" : "1", "unit" : "KG" },
         {"item" : "Besan", "quantity" : "1", "unit" : "KG" },
         {"item" : "Grount Nuts", "quantity" : "1", "unit" : "KG" }
@@ -46,7 +56,8 @@
       "products": [
         {"item" : "Coffee", "quantity" : "1", "unit" : "Grams" },
         {"item" : "Horlicks", "quantity" : "1", "unit" : "KG" },
-        {"item" : "Bournvita", "quantity" : "1", "unit" : "KG" }
+        {"item" : "Bournvita", "quantity" : "1", "unit" : "KG" },
+        {"item" : "Tea", "quantity" : "1", "unit" : "KG" }
       ]
     },
 
@@ -56,8 +67,8 @@
         {"item" : "Detergent Powder", "quantity" : "1", "unit" : "KG" },
         {"item" : "Hand wash", "quantity" : "1", "unit" : "ML" },
         {"item" : "Dish wash", "quantity" : "1", "unit" : "ML" },
-        {"item" : "Soap", "quantity" : "1", "unit" : "Pack" },
-        {"item" : "Garbage Bag", "quantity" : "1", "unit" : "Pack" }
+        {"item" : "Soap", "quantity" : "1", "unit" : "pack" },
+        {"item" : "Garbage Bag", "quantity" : "1", "unit" : "pack" }
       ]
     },
 
@@ -74,10 +85,10 @@
     {
       "listName" : "Vegetables",
       "products": [
-        {"item" : "Potatoes", "quantity" : "1", "unit" : "Grams" },
-        {"item" : "Onions", "quantity" : "1", "unit" : "Grams" },
-        {"item" : "Tomatoes", "quantity" : "1", "unit" : "Grams" },
-        {"item" : "Brijanls", "quantity" : "1", "unit" : "Grams" }
+        {"item" : "Potato", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Onion", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Tomato", "quantity" : "1", "unit" : "Grams" },
+        {"item" : "Eggplant/Brinjal", "quantity" : "1", "unit" : "Grams" }
       ]
     }
 

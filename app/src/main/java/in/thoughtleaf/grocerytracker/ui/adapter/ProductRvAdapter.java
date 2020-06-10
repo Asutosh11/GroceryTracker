@@ -8,13 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thoughtleaf.grocerytracker.R;
@@ -45,7 +44,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         public ImageView btnAddToBuyingList;
         public ImageView btnDelete;
         public ImageView btnIcon;
-        public AppCompatSpinner sprUnit;
+        public Spinner sprUnit;
 
 
         public Viewholder(View itemView) {
@@ -60,7 +59,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
             imgPlus = (TextView)itemView.findViewById(R.id.imgPlus);
             btnAddToBuyingList = (ImageView)itemView.findViewById(R.id.btn_add_to_buying_list);
             btnDelete = (ImageView)itemView.findViewById(R.id.btn_delete);
-            sprUnit = (AppCompatSpinner)itemView.findViewById(R.id.sprUnit);
+            sprUnit = (Spinner)itemView.findViewById(R.id.sprUnit);
 
         }
     }

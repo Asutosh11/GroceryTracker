@@ -85,8 +85,7 @@
                     android:textColor="@color/black"
                     android:textSize="15sp" />
 
-                <androidx.appcompat.widget.AppCompatSpinner
-                    
+                <Spinner
                     android:background="@drawable/spinner_box_small"
                     android:layout_marginLeft="0dp"
                     android:spinnerMode="dropdown"

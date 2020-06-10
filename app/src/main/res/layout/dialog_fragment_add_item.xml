@@ -45,7 +45,7 @@
         android:layout_height="40dp"/>
 
 
-    <EditText
+    <in.thoughtleaf.grocerytracker.customviews.SpeechToTextEditText
         android:layout_marginTop="20dp"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
@@ -57,9 +57,9 @@
         android:layout_height="40dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter a new category"/>
+        android:hint="New category"/>
 
-    <EditText
+    <in.thoughtleaf.grocerytracker.customviews.SpeechToTextEditText
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textSize="14sp"
@@ -71,7 +71,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter Product Name"/>
+        android:hint="Product Name"/>
 
     <Button
         android:layout_marginTop="20dp"

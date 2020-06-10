@@ -17,9 +17,10 @@
     <string-array name="quantity_unit_values">
         <item>KG</item>
         <item>grams</item>
-        <item>Litre</item>
+        <item>litre</item>
         <item>ML</item>
-        <item>Pack</item>
+        <item>pack</item>
+        <item>piece</item>
     </string-array>
 
 </resources>

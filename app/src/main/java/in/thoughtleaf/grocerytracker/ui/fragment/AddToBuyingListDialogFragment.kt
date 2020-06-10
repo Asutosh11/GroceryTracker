@@ -1,26 +1,29 @@
 package `in`.thoughtleaf.grocerytracker.ui.fragment
 
+import `in`.thoughtleaf.grocerytracker.customviews.SpeechToTextEditText
 import `in`.thoughtleaf.grocerytracker.data.dao.BuyingListDAO
 import `in`.thoughtleaf.grocerytracker.data.event.AddedToBuyingListEvent
 import `in`.thoughtleaf.grocerytracker.data.pojo.Product
+import android.annotation.SuppressLint
+import android.app.Activity
 import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
+import android.speech.RecognizerIntent
+import android.view.*
 import android.widget.Button
-import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.NonNull
 import androidx.fragment.app.DialogFragment
 import com.thoughtleaf.grocerytracker.R
 import org.greenrobot.eventbus.EventBus
+import java.util.*
 
 class AddToBuyingListDialogFragment : DialogFragment() {
 
     lateinit var addBtn : Button
-    lateinit var itemNameET : EditText
+    lateinit var itemNameET : SpeechToTextEditText
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -49,6 +52,9 @@ class AddToBuyingListDialogFragment : DialogFragment() {
 
         })
 
+        itemNameET.setTag(1)
+        drawableRightClickListener(itemNameET)
+
         return root
     }
 
@@ -65,5 +71,54 @@ class AddToBuyingListDialogFragment : DialogFragment() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         return dialog
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == Activity.RESULT_OK){
+
+            val result: ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)!!
+
+            if(requestCode == 1){
+                itemNameET.setText(result.get(0))
+            }
+        }
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun drawableRightClickListener(editText: SpeechToTextEditText){
+        editText.setOnTouchListener(View.OnTouchListener { v, event ->
+            val DRAWABLE_LEFT = 0
+            val DRAWABLE_TOP = 1
+            val DRAWABLE_RIGHT = 2
+            val DRAWABLE_BOTTOM = 3
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= editText.getRight() - editText.getCompoundDrawables().get(
+                        DRAWABLE_RIGHT
+                    ).getBounds().width()
+                ) {
+                    startSpeechToTextDialog(editText.getTag() as Int)
+                    return@OnTouchListener true
+                }
+            }
+            false
+        })
+    }
+
+    fun startSpeechToTextDialog(requestCode: Int){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak")
+        try {
+            startActivityForResult(intent, requestCode)
+        } catch (a: ActivityNotFoundException) {
+            Toast.makeText(
+                context?.applicationContext,
+                "Sorry your device not supported",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

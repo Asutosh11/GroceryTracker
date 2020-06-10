@@ -1,29 +1,34 @@
 package `in`.thoughtleaf.grocerytracker.ui.fragment
 
-import android.app.Dialog
-import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.View.GONE
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.*
-import androidx.annotation.NonNull
-import androidx.fragment.app.DialogFragment
+import `in`.thoughtleaf.grocerytracker.customviews.SpeechToTextEditText
 import `in`.thoughtleaf.grocerytracker.data.dao.ItemsListDAO
 import `in`.thoughtleaf.grocerytracker.data.event.NewProductAddedEvent
 import `in`.thoughtleaf.grocerytracker.data.pojo.Product
 import `in`.thoughtleaf.grocerytracker.util.AppConstantsUtil
+import android.annotation.SuppressLint
+import android.app.Activity.RESULT_OK
+import android.app.Dialog
+import android.content.ActivityNotFoundException
+import android.content.Intent
+import android.os.Bundle
+import android.speech.RecognizerIntent
+import android.view.*
+import android.view.View.GONE
+import android.view.View.OnTouchListener
+import android.widget.*
+import androidx.annotation.NonNull
+import androidx.fragment.app.DialogFragment
 import com.thoughtleaf.grocerytracker.R
 import org.greenrobot.eventbus.EventBus
+import java.util.*
 
 
 class AddProductDialogFragment : DialogFragment() {
 
     lateinit var categorySpinner : Spinner
     lateinit var addBtn : Button
-    lateinit var itemNameET : EditText
-    lateinit var newCategoryNameET : EditText
+    lateinit var itemNameET : SpeechToTextEditText
+    lateinit var newCategoryNameET : SpeechToTextEditText
     lateinit var labelExistingCategoriesTV : TextView
     lateinit var titleDialogTV : TextView
 
@@ -127,6 +132,11 @@ class AddProductDialogFragment : DialogFragment() {
             }
         })
 
+        itemNameET.setTag(1)
+        newCategoryNameET.setTag(2)
+        drawableRightClickListener(itemNameET)
+        drawableRightClickListener(newCategoryNameET)
+
         return root
     }
 
@@ -167,5 +177,55 @@ class AddProductDialogFragment : DialogFragment() {
             WindowManager.LayoutParams.FLAG_FULLSCREEN
         )
         return dialog
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode == RESULT_OK){
+
+            val result: ArrayList<String> = data?.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS)!!
+
+            if(requestCode == 1){
+                itemNameET.setText(result.get(0))
+            }
+            else if(requestCode == 2){
+                newCategoryNameET.setText(result.get(0))
+            }
+        }
+
+    }
+
+    @SuppressLint("ClickableViewAccessibility")
+    fun drawableRightClickListener(editText: SpeechToTextEditText){
+        editText.setOnTouchListener(OnTouchListener { v, event ->
+            val DRAWABLE_LEFT = 0
+            val DRAWABLE_TOP = 1
+            val DRAWABLE_RIGHT = 2
+            val DRAWABLE_BOTTOM = 3
+            if (event.action == MotionEvent.ACTION_UP) {
+                if (event.rawX >= editText.getRight() - editText.getCompoundDrawables().get(DRAWABLE_RIGHT).getBounds().width()) {
+                    startSpeechToTextDialog(editText.getTag() as Int)
+                    return@OnTouchListener true
+                }
+            }
+            false
+        })
+    }
+
+    fun startSpeechToTextDialog(requestCode: Int){
+        val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.getDefault())
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Need to speak")
+        try {
+            startActivityForResult(intent, requestCode)
+        } catch (a: ActivityNotFoundException) {
+            Toast.makeText(
+                context?.applicationContext,
+                "Sorry your device not supported",
+                Toast.LENGTH_SHORT
+            ).show()
+        }
     }
 }

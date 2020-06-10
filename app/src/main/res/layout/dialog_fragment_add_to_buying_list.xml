@@ -15,12 +15,12 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:background="@color/colorPrimary"
-        android:text="Add product to buying list"
+        android:text="Add to buying list"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         ></TextView>
 
-    <EditText
+    <in.thoughtleaf.grocerytracker.customviews.SpeechToTextEditText
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         android:textSize="14sp"
@@ -32,7 +32,7 @@
         android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:hint="Enter Product Name"/>
+        android:hint="Product Name"/>
 
     <Button
         android:layout_marginTop="20dp"
