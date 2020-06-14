@@ -18,6 +18,15 @@ class BuyingListDAO {
     var itemQuantity: String? = null
     var itemUnit: String? = null
 
+    constructor()
+
+    constructor(itemName: String?, itemCategory: String?, itemQuantity: String?, itemUnit: String?) {
+        this.itemName = itemName
+        this.itemCategory = itemCategory
+        this.itemQuantity = itemQuantity
+        this.itemUnit = itemUnit
+    }
+
     companion object{
 
         fun addProduct(product: Product) {
@@ -36,7 +45,6 @@ class BuyingListDAO {
         fun getAllOfflineData() : ArrayList<Product> {
 
             val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
-
 
             val result: List<BuyingListDAO> = buyingItemsListBox.query()
                 .notNull(BuyingListDAO_.itemName)
@@ -61,7 +69,6 @@ class BuyingListDAO {
         fun getAllOfflineDataNames() : ArrayList<String> {
 
             val buyingItemsListBox: Box<BuyingListDAO> = ObjectBoxUtil.boxStore.boxFor()
-
 
             val result: List<BuyingListDAO> = buyingItemsListBox.query()
                 .notNull(BuyingListDAO_.itemName)

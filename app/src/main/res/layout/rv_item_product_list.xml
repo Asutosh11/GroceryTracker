@@ -50,9 +50,10 @@
                 android:layout_weight="1.2"
                 android:layout_height="match_parent">
 
-                <TextView
+                <in.thoughtleaf.grocerytracker.customviews.DbAttachedEditText
+                    android:background="@null"
                     android:gravity="left|center_vertical"
-                    android:id="@+id/tvItemName"
+                    android:id="@+id/etItemName"
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:paddingLeft="8dp"
@@ -60,7 +61,9 @@
                     android:text="item name"
                     android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"/>
+                    android:layout_height="60dp"
+                    app:item_name_type="itemName"
+                    />
 
             </LinearLayout>
 
@@ -74,7 +77,9 @@
                 android:paddingTop="3dp"
                 android:paddingBottom="3dp">
 
-                <TextView
+                <in.thoughtleaf.grocerytracker.customviews.DbAttachedEditText
+                    android:background="@null"
+                    app:item_name_type="itemQuantity"
                     android:textStyle="bold"
                     android:id="@+id/tvQuantity"
                     android:layout_width="40dp"

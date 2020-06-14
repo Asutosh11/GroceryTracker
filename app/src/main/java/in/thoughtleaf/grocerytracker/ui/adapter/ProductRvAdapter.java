@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -17,6 +18,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.thoughtleaf.grocerytracker.R;
+
+import in.thoughtleaf.grocerytracker.customviews.DbAttachedEditText;
 import in.thoughtleaf.grocerytracker.data.dao.BuyingListDAO;
 import in.thoughtleaf.grocerytracker.data.dao.ItemsListDAO;
 import in.thoughtleaf.grocerytracker.data.pojo.Product;
@@ -39,7 +42,8 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         // 1. Declare your Views here
 
         public TextView imgMinus;
-        public TextView tvQuantity, tvItemName;
+        public DbAttachedEditText tvQuantity;
+        public DbAttachedEditText etItemName;
         public TextView imgPlus;
         public ImageView btnAddToBuyingList;
         public ImageView btnDelete;
@@ -54,8 +58,8 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
 
             imgMinus = (TextView)itemView.findViewById(R.id.imgMinus);
             btnIcon = (ImageView)itemView.findViewById(R.id.iconImv);
-            tvQuantity = (TextView)itemView.findViewById(R.id.tvQuantity);
-            tvItemName = (TextView)itemView.findViewById(R.id.tvItemName);
+            tvQuantity = (DbAttachedEditText)itemView.findViewById(R.id.tvQuantity);
+            etItemName = (DbAttachedEditText)itemView.findViewById(R.id.etItemName);
             imgPlus = (TextView)itemView.findViewById(R.id.imgPlus);
             btnAddToBuyingList = (ImageView)itemView.findViewById(R.id.btn_add_to_buying_list);
             btnDelete = (ImageView)itemView.findViewById(R.id.btn_delete);
@@ -119,7 +123,8 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
         setIcon(holder, data.get(holder.getAdapterPosition()).getListName());
 
         holder.tvQuantity.setText(data.get(holder.getAdapterPosition()).getQuantity());
-        holder.tvItemName.setText(data.get(holder.getAdapterPosition()).getItem());
+        holder.tvQuantity.setCurrentItemNameTextForQuantity(data.get(holder.getAdapterPosition()).getItem());
+        holder.etItemName.setText(data.get(holder.getAdapterPosition()).getItem());
 
         holder.imgMinus.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,7 +133,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
                 if(qty > 0){
                     qty = qty - 0.5;
                     holder.tvQuantity.setText(String.valueOf(qty));
-                    ItemsListDAO.Companion.updateItemByName(holder.tvItemName.getText().toString(), String.valueOf(qty));
+                    ItemsListDAO.Companion.updateItemByName(holder.etItemName.getText().toString(), String.valueOf(qty));
                 }
             }
         });
@@ -139,7 +144,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
                 double qty = Double.parseDouble(holder.tvQuantity.getText().toString());
                 qty = qty + 0.5;
                 holder.tvQuantity.setText(String.valueOf(qty));
-                ItemsListDAO.Companion.updateItemByName(holder.tvItemName.getText().toString(), String.valueOf(qty));
+                ItemsListDAO.Companion.updateItemByName(holder.etItemName.getText().toString(), String.valueOf(qty));
             }
         });
 
@@ -176,7 +181,7 @@ public class ProductRvAdapter extends RecyclerView.Adapter<ProductRvAdapter.View
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                ItemsListDAO.Companion.deleteItemByName(holder.tvItemName.getText().toString());
+                                ItemsListDAO.Companion.deleteItemByName(holder.etItemName.getText().toString());
                                 data.remove(data.get(holder.getAdapterPosition()));
                                 notifyDataSetChanged();
                             }

@@ -7,4 +7,13 @@
 
     </declare-styleable>
 
+    <declare-styleable name="DbAttachedEditText">
+
+        <attr name="item_name_type" format="integer">
+            <flag name="itemName" value="1" />
+            <flag name="itemQuantity" value="2" />
+        </attr>
+
+    </declare-styleable>
+
 </resources>

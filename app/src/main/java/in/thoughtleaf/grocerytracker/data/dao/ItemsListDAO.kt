@@ -15,6 +15,8 @@ import io.objectbox.kotlin.boxFor
 @Entity
 public class ItemsListDAO {
 
+
+
     @Id
     var id: Long = 0
 
@@ -25,6 +27,15 @@ public class ItemsListDAO {
 
     var itemQuantity: String? = null
     var itemUnit: String? = null
+
+    constructor()
+
+    constructor(itemName: String?, itemCategory: String?, itemQuantity: String?, itemUnit: String?) {
+        this.itemName = itemName
+        this.itemCategory = itemCategory
+        this.itemQuantity = itemQuantity
+        this.itemUnit = itemUnit
+    }
 
     companion object{
 
@@ -150,6 +161,7 @@ public class ItemsListDAO {
             val result: List<ItemsListDAO> = itemsListBox.query()
                 .notNull(ItemsListDAO_.itemName)
                 .equal(ItemsListDAO_.itemCategory, category)
+                .order(ItemsListDAO_.itemName)
                 .build().find()
 
             var productsList : ArrayList<Product> = ArrayList()
@@ -238,5 +250,38 @@ public class ItemsListDAO {
             itemsListBox.remove(result)
         }
 
+    fun changeproductItemName(oldName : String, newName : String){
+
+        val itemsListBox: Box<ItemsListDAO> = ObjectBoxUtil.boxStore.boxFor()
+
+        val result: List<ItemsListDAO> = itemsListBox.query()
+            .notNull(ItemsListDAO_.itemName)
+            .equal(ItemsListDAO_.itemName, oldName)
+            .build().find()
+
+        if(result != null && result.size > 0){
+            itemsListBox.put(ItemsListDAO(newName, result.get(0).itemCategory, result.get(0).itemQuantity, result.get(0).itemUnit))
+            itemsListBox.remove(result.get(0))
+        }
+
     }
+
+        fun changeproductItemQuantity(name : String, newQuantity : String){
+
+            val itemsListBox: Box<ItemsListDAO> = ObjectBoxUtil.boxStore.boxFor()
+
+            val result: List<ItemsListDAO> = itemsListBox.query()
+                .notNull(ItemsListDAO_.itemName)
+                .equal(ItemsListDAO_.itemName, name)
+                .build().find()
+
+            if(result != null && result.size > 0){
+                itemsListBox.remove(result.get(0))
+                itemsListBox.put(ItemsListDAO(name, result.get(0).itemCategory, newQuantity, result.get(0).itemUnit))
+            }
+
+        }
+
+ }
+
 }
