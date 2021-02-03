@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#128c7e</color>
+
+    <!-- change item 2 -->
+
+    <!-- color set 1 -->
+
+    <!--<color name="colorPrimary">#128c7e</color>
     <color name="colorPrimaryDark">#075e54</color>
     <color name="colorAccent">#9A9A9A</color>
     <color name="textBoxBorder">#9A9A9A</color>
@@ -11,5 +16,20 @@
     <color name="white">#ffffff</color>
     <color name="black">#000</color>
     <color name="custom_red">#CD4E4E</color>
+    <color name="iconsGrey3">#BCBCBC</color>-->
+
+    <!-- color set 2 -->
+
+    <color name="colorPrimary">#2196F3</color>
+    <color name="colorPrimaryDark">#1185E1</color>
+    <color name="colorAccent">#9A9A9A</color>
+    <color name="textBoxBorder">#9A9A9A</color>
+    <color name="iconsGrey">#676767</color>
+    <color name="lightGreen">#03A9F4</color>
+    <color name="lightGreen2">#00BCD4</color>
+    <color name="lightGreen3">#84E0EC</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000</color>
+    <color name="custom_red">#FF9800</color>
     <color name="iconsGrey3">#BCBCBC</color>
 </resources>

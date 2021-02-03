@@ -1,24 +1,18 @@
 package `in`.thoughtleaf.grocerytracker.customviews
 
-import android.R.attr
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
+import android.os.Build
 import android.util.AttributeSet
-import android.widget.EditText
+import android.widget.AutoCompleteTextView
+import androidx.annotation.RequiresApi
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.content.res.ResourcesCompat
 import com.thoughtleaf.grocerytracker.R
 
-
 @SuppressLint("AppCompatCustomView")
-class SpeechToTextEditText : EditText {
-
-    private var mContext: Context? = null
-
-    constructor(context: Context?) : super(context){
-        init(context, null)
-    }
+class CustomAutoCompleteTextView : AutoCompleteTextView {
 
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs){
         init(context, attrs)
@@ -28,10 +22,21 @@ class SpeechToTextEditText : EditText {
         init(context, attrs)
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int) : super(context, attrs, defStyleAttr, defStyleRes){
+        init(context, attrs)
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int, defStyleRes: Int, popupTheme: Resources.Theme?) : super(context, attrs, defStyleAttr, defStyleRes, popupTheme){
+        init(context, attrs)
+    }
+
+    constructor(context: Context?) : super(context){
+        init(context, null)
+    }
 
     fun init(context: Context?, attrs: AttributeSet?){
-        mContext = context
-
         val rightDrawable = AppCompatResources.getDrawable(getContext(), R.drawable.ic_keyboard_voice_black_24dp)
 
         setError(null)
@@ -49,7 +54,4 @@ class SpeechToTextEditText : EditText {
         super.onDraw(canvas)
 
     }
-
-
-
 }

@@ -10,15 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <AutoCompleteTextView
+        <in.thoughtleaf.grocerytracker.customviews.CustomAutoCompleteTextView
             android:layout_marginTop="8dp"
             android:id="@+id/search_box_act"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:background="@drawable/box_shape"
-            android:drawableRight="@drawable/ic_keyboard_voice_black_24dp"
             android:hint="Search for an item"
             android:padding="5dp"
             android:textSize="16dp"/>
@@ -43,7 +41,6 @@
 
         <TextView
             android:letterSpacing="0"
-            android:fontFamily="@font/architects_daughter_regular"
             android:gravity="center"
             android:padding="10dp"
             android:background="@color/lightGreen3"

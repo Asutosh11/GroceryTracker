@@ -31,6 +31,8 @@ class DbAttachedEditText : EditText {
 
     fun init(context: Context?, attrs: AttributeSet?) {
 
+        // change item 5
+
         val typedArray = context!!.obtainStyledAttributes(attrs, R.styleable.DbAttachedEditText)
         val item_name_type = typedArray.getInteger(R.styleable.DbAttachedEditText_item_name_type, -1)
 
